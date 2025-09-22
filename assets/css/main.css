@@ -1,0 +1,69 @@
+/* Hero container */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Slider container */
+.hero-slider {
+    width: 100%;
+    max-width: 900px; /* ancho total del carrusel */
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Slides wrapper */
+.slides {
+    display: flex;
+    width: calc(250px * 8); 
+    animation: slide 20s linear infinite;
+}
+
+/* Cada imagen */
+.slides img {
+    width: 250px;       /* ancho fijo de cada imagen */
+    height: 300px;      /* altura fija */
+    object-fit: cover; /* sin zoom */
+    margin: 0 5px;      /* separación */
+    border-radius: 8px;
+    background: #fff;
+}
+
+/* Texto hero */
+.hero-text h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.hero-text button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #040608;
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-text button:hover {
+    background-color: #0056b3;
+}
+
+/* Animación carrusel infinito */
+@keyframes slide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-1000px); } /* 4 imágenes * 250px */
+}
