@@ -16,7 +16,7 @@
 }
 
 .navbar-brand img {
-   max-height: 100px; /* controla el alto */
+   max-height: 50px; /* controla el alto */
    width: auto;      /* mantiene proporción */
 }
 
