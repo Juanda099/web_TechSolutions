@@ -12,10 +12,12 @@
 /* Slider container */
 .hero-slider {
     width: 100%;
-    max-width: 900px; /* ancho total del carrusel */
     overflow: hidden;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
     position: relative;
 }
 
@@ -39,12 +41,14 @@
 /* Texto hero */
 .hero-text h1 {
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 .hero-text p {
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+    margin-top: 50px;
 }
 
 .hero-text button {
