@@ -7,6 +7,7 @@
   margin-left: 50px;
   margin-right: 50px;
   font-family: 'Segoe UI', sans-serif;
+  justify-content: center;
 }
 
 .footer #copyright {
@@ -187,4 +188,97 @@
     flex: 0 0 48%;        /* Cada tarjeta ocupa cerca de la mitad del contenedor, con espacio para gap */
     width: 48%;
   }
+}
+
+#detalles-servicios-container {
+  margin: 50px auto 0 auto;
+  max-width: 1500px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los items se envuelvan a la siguiente fila */
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.detalles-servicio-item {
+  /* Para las dos primeras columnas, ocupan la mitad cada una */
+  flex: 1 1 42%;
+  box-sizing: border-box;
+}
+
+.detalles-servicio-item:first-child {
+  display: flex;
+  align-items: center; /* Centra verticalmente si hay más contenido */
+  padding-right: 20px; /* Espacio entre la imagen y el borde derecho */
+}
+
+/* Imagen ocupa un tamaño adecuado, no todo el ancho */
+.detalles-servicio-item:first-child img {
+  width: auto;     /* ancho automático */
+  max-width: 100%;  /* máximo 90% del contenedor */
+  padding-left: 60px;
+  height: max(300px, 60vh);
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0;       /* sin margen para evitar desplazamientos */
+}
+
+/* Para la tercera columna, ocupa el 100% (fila completa) */
+.detalles-servicio-item:nth-child(3) {
+  flex: 1 1 100%;
+}
+
+
+/* Imagen ajustada */
+.detalles-servicio-item img {
+  width: 40%;
+  height: max(250px, 60vh);
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+/* Texto y botón */
+.detalles-servicio-item h3 {
+  font-size: 2.5em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 50px;
+  color: #080808;
+}
+
+.detalles-servicio-item p {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  color: #555;
+}
+
+#descripción {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  color: #555;
+}
+
+.detalles-servicio-item button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+
+.detalles-servicio-item button:hover {
+  background-color: #0056b3;
 }
