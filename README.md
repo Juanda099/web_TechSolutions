@@ -1,75 +1,265 @@
 # TechSolutions - Sitio Web de Servicios Tecnológicos
 
-## Descripción
+Sitio web estático para promocionar servicios tecnológicos con páginas de inicio, listado de servicios, detalle de servicio, autenticación y un panel de administración.
 
-TechSolutions es un sitio web moderno que ofrece servicios tecnológicos de calidad. El sitio incluye páginas para servicios, detalles, autenticación y un panel de administración.
+- Demo local: abre [index.html](index.html)
+- Panel de administración: [admin.html](admin.html)
+- Login: [login.html](login.html)
 
+## Características
 
-## Cómo Ejecutar el Sitio
+- Landing con carrusel estilo slider.
+- Catálogo de servicios con páginas de detalle.
+- Carga de Header y Footer vía templates HTML.
+- Autenticación básica en cliente con bloqueo por intentos.
+- Panel de administración (UI) para gestionar servicios.
 
-### Opción 1: Servidor Web Local (Recomendado)
+## Estructura del proyecto
 
-**Paso 1:** Abre una terminal en el directorio del proyecto
-```powershell
-cd "C:\Users\juand\Desktop\Web_TechSolutions"
-```
+- Páginas principales:
+  - [index.html](index.html)
+  - [servicios.html](servicios.html)
+  - [login.html](login.html)
+  - [admin.html](admin.html)
+  - Detalles: detalles-servicio1.html … detalles-servicio8.html
 
-**Paso 2:** Ejecuta un servidor web local usando Python
+- Templates:
+  - Header: [templates/header.html](templates/header.html)
+  - Footer: [templates/footer.html](templates/footer.html)
 
-Si tienes Python 3 instalado:
-```powershell
-python -m http.server 8000
-```
+- Estilos:
+  - Base: [assets/css/main.css](assets/css/main.css)
+  - Componentes (navbar): [assets/css/components.css](assets/css/components.css)
+  - Secciones (servicios, detalle, footer): [assets/css/styles.css](assets/css/styles.css)
+  - Autenticación: [assets/css/auth.css](assets/css/auth.css)
+  - Admin: [assets/css/admin.css](assets/css/admin.css)
 
-Si tienes Python 2:
-```powershell
-python -m SimpleHTTPServer 8000
-```
+- Scripts:
+  - Carga de header: [assets/js/load-header.js](assets/js/load-header.js)
+  - Carga de footer: [assets/js/load-footer.js](assets/js/load-footer.js)
+  - Autenticación: [assets/js/auth.js](assets/js/auth.js)
+  - Utilidades/animaciones (opcional): [assets/js/animations.js](assets/js/animations.js), [assets/js/main.js](assets/js/main.js)
+  - Sistema alterno de templates (no usado por defecto): [assets/js/template-config.js](assets/js/template-config.js), [assets/js/template-loader.js](assets/js/template-loader.js)
 
-**Paso 3:** Abre tu navegador y visita:
-```
-http://localhost:8000
-```
+## Cómo ejecutar el sitio localmente
 
-### Opción 2: Usando Node.js y http-server
+El sitio es estático. Usa una de estas opciones:
 
-**Paso 1:** Instala http-server globalmente (solo la primera vez)
-```powershell
-npm install -g http-server
-```
+- Python 3
+  - Windows PowerShell:
+    - cd "C:\Users\juand\Desktop\Web_TechSolutions"
+    - python -m http.server 8000
+  - Navega a http://localhost:8000
 
-**Paso 2:** Navega al directorio del proyecto
-```powershell
-cd "C:\Users\juand\Desktop\Web_TechSolutions"
-```
+- Node.js (http-server)
+  - npm install -g http-server
+  - cd "C:\Users\juand\Desktop\Web_TechSolutions"
+  - http-server
+  - Abre la URL indicada (p. ej. http://localhost:8080)
 
-**Paso 3:** Ejecuta el servidor
-```powershell
-http-server
-```
+- VS Code (Live Server)
+  - Instala la extensión "Live Server"
+  - Abre el proyecto y ejecuta “Open with Live Server” sobre [index.html](index.html)
 
-**Paso 4:** Abre tu navegador en la URL mostrada (generalmente `http://localhost:8080`)
+- XAMPP/WAMP
+  - Copia el proyecto a htdocs/www y abre http://localhost/Web_TechSolutions
 
-### Opción 3: Usando Live Server (Visual Studio Code)
+## Páginas y navegación
 
-**Paso 1:** Instala la extensión "Live Server" en VS Code
+- Inicio: [index.html](index.html) con carrusel e invitación a servicios.
+- Servicios: [servicios.html](servicios.html) listado con tarjetas.
+- Detalles: páginas detalles-servicioX.html (1–8).
+- Login: [login.html](login.html) con formulario y recordatorio.
+- Admin: [admin.html](admin.html) tabla de servicios y modal para agregar/editar.
 
-**Paso 2:** Abre el proyecto en VS Code
-```powershell
-code "C:\Users\juand\Desktop\Web_TechSolutions"
-```
+El header y footer se inyectan dinámicamente:
+- Header: [assets/js/load-header.js](assets/js/load-header.js) → [templates/header.html](templates/header.html)
+- Footer: [assets/js/load-footer.js](assets/js/load-footer.js) → [templates/footer.html](templates/footer.html)
 
-**Paso 3:** Haz clic derecho en `index.html` y selecciona "Open with Live Server"
+Nota: Estas cargas usan contenedores con id="header-container" y id="footer-container" presentes en las páginas.
 
-### Opción 4: Usando XAMPP/WAMP
+## Autenticación (demo)
 
-**Paso 1:** Instala XAMPP o WAMP
+Implementada en cliente solo para demostración en [assets/js/auth.js](assets/js/auth.js).
 
-**Paso 2:** Copia la carpeta del proyecto a:
-- XAMPP: `C:\xampp\htdocs\Web_TechSolutions`
-- WAMP: `C:\wamp64\www\Web_TechSolutions`
+- Usuarios demo:
+  - admin / admin123
+  - usuario / user123
+  - techsolutions / tech2024
+- Intentos máximos: 3. Bloqueo temporal de 5 minutos.
+- Recuerda sesión con localStorage/sessionStorage.
+- Tras login exitoso, redirige a [admin.html](admin.html).
 
-**Paso 3:** Inicia Apache desde el panel de control
+Advertencia: No uses este esquema en producción. Debe reemplazarse por autenticación del lado servidor.
 
-**Paso 4:** Visita: `http://localhost/Web_TechSolutions`
+## Panel de Administración
 
+UI en [admin.html](admin.html) con:
+- Tabla de servicios.
+- Modal “Agregar/Editar” con preview de imagen.
+- Botones de acción por fila.
+
+Sugerencia: Conecta este panel a un backend real (API) o a un JSON estático para persistir cambios. Si ya tienes script de soporte, colócalo en [assets/js/admin.js](assets/js/admin.js).
+
+## Templates: opción alterna
+
+Existen utilidades más avanzadas para carga de templates:
+- Config: [assets/js/template-config.js](assets/js/template-config.js)
+- Loader: [assets/js/template-loader.js](assets/js/template-loader.js)
+
+Actualmente las páginas usan “header-container/footer-container”. Si deseas usar este sistema alterno:
+1) Cambia los contenedores a id="header" y id="footer".
+2) Incluye ambos scripts en las páginas antes del cierre de body.
+3) Opcional: ajusta TemplateConfig.settings y pageTemplates.
+
+## Buenas prácticas y mejoras sugeridas
+
+- Accesibilidad: agrega etiquetas aria, alt descriptivos y roles.
+- SEO: títulos únicos, meta-descriptions, y headings consistentes.
+- Performance: optimiza imágenes en assets/img/servicios, usa tamaños responsivos.
+- Consistencia: unifica mayúsculas/minúsculas en nombres de archivos (Img1.jpg vs img1.jpg).
+- Seguridad: mueve credenciales y lógica de auth a un backend.
+- Automatización: añade un script npm para servir (p. ej., “serve” con http-server).
+- Despliegue: usar GitHub Pages, Netlify o Vercel (carpeta raíz).
+
+## Contribuir
+
+1) Crea una rama feature/nombre-feature
+2) Commit con mensajes claros
+3) Pull Request con descripción y capturas
+
+## Licencia
+
+Define la licencia del proyecto (MIT recomendada).
+
+---
+```// filepath: c:\Users\juand\Desktop\Web_TechSolutions\README.md
+# TechSolutions - Sitio Web de Servicios Tecnológicos
+
+Sitio web estático para promocionar servicios tecnológicos con páginas de inicio, listado de servicios, detalle de servicio, autenticación y un panel de administración.
+
+- Demo local: abre [index.html](index.html)
+- Panel de administración: [admin.html](admin.html)
+- Login: [login.html](login.html)
+
+## Características
+
+- Landing con carrusel estilo slider.
+- Catálogo de servicios con páginas de detalle.
+- Carga de Header y Footer vía templates HTML.
+- Autenticación básica en cliente con bloqueo por intentos.
+- Panel de administración (UI) para gestionar servicios.
+
+## Estructura del proyecto
+
+- Páginas principales:
+  - [index.html](index.html)
+  - [servicios.html](servicios.html)
+  - [login.html](login.html)
+  - [admin.html](admin.html)
+  - Detalles: detalles-servicio1.html … detalles-servicio8.html
+
+- Templates:
+  - Header: [templates/header.html](templates/header.html)
+  - Footer: [templates/footer.html](templates/footer.html)
+
+- Estilos:
+  - Base: [assets/css/main.css](assets/css/main.css)
+  - Componentes (navbar): [assets/css/components.css](assets/css/components.css)
+  - Secciones (servicios, detalle, footer): [assets/css/styles.css](assets/css/styles.css)
+  - Autenticación: [assets/css/auth.css](assets/css/auth.css)
+  - Admin: [assets/css/admin.css](assets/css/admin.css)
+
+- Scripts:
+  - Carga de header: [assets/js/load-header.js](assets/js/load-header.js)
+  - Carga de footer: [assets/js/load-footer.js](assets/js/load-footer.js)
+  - Autenticación: [assets/js/auth.js](assets/js/auth.js)
+  - Utilidades/animaciones (opcional): [assets/js/animations.js](assets/js/animations.js), [assets/js/main.js](assets/js/main.js)
+  - Sistema alterno de templates (no usado por defecto): [assets/js/template-config.js](assets/js/template-config.js), [assets/js/template-loader.js](assets/js/template-loader.js)
+
+## Cómo ejecutar el sitio localmente
+
+El sitio es estático. Usa una de estas opciones:
+
+- Python 3
+  - Windows PowerShell:
+    - cd "C:\Users\juand\Desktop\Web_TechSolutions"
+    - python -m http.server 8000
+  - Navega a http://localhost:8000
+
+- Node.js (http-server)
+  - npm install -g http-server
+  - cd "C:\Users\juand\Desktop\Web_TechSolutions"
+  - http-server
+  - Abre la URL indicada (p. ej. http://localhost:8080)
+
+- VS Code (Live Server)
+  - Instala la extensión "Live Server"
+  - Abre el proyecto y ejecuta “Open with Live Server” sobre [index.html](index.html)
+
+- XAMPP/WAMP
+  - Copia el proyecto a htdocs/www y abre http://localhost/Web_TechSolutions
+
+## Páginas y navegación
+
+- Inicio: [index.html](index.html) con carrusel e invitación a servicios.
+- Servicios: [servicios.html](servicios.html) listado con tarjetas.
+- Detalles: páginas detalles-servicioX.html (1–8).
+- Login: [login.html](login.html) con formulario y recordatorio.
+- Admin: [admin.html](admin.html) tabla de servicios y modal para agregar/editar.
+
+El header y footer se inyectan dinámicamente:
+- Header: [assets/js/load-header.js](assets/js/load-header.js) → [templates/header.html](templates/header.html)
+- Footer: [assets/js/load-footer.js](assets/js/load-footer.js) → [templates/footer.html](templates/footer.html)
+
+Nota: Estas cargas usan contenedores con id="header-container" y id="footer-container" presentes en las páginas.
+
+## Autenticación (demo)
+
+Implementada en cliente solo para demostración en [assets/js/auth.js](assets/js/auth.js).
+
+- Usuarios demo:
+  - admin / admin123
+  - usuario / user123
+  - techsolutions / tech2024
+- Intentos máximos: 3. Bloqueo temporal de 5 minutos.
+- Recuerda sesión con localStorage/sessionStorage.
+- Tras login exitoso, redirige a [admin.html](admin.html).
+
+Advertencia: No uses este esquema en producción. Debe reemplazarse por autenticación del lado servidor.
+
+## Panel de Administración
+
+UI en [admin.html](admin.html) con:
+- Tabla de servicios.
+- Modal “Agregar/Editar” con preview de imagen.
+- Botones de acción por fila.
+
+Sugerencia: Conecta este panel a un backend real (API) o a un JSON estático para persistir cambios. Si ya tienes script de soporte, colócalo en [assets/js/admin.js](assets/js/admin.js).
+
+## Templates: opción alterna
+
+Existen utilidades más avanzadas para carga de templates:
+- Config: [assets/js/template-config.js](assets/js/template-config.js)
+- Loader: [assets/js/template-loader.js](assets/js/template-loader.js)
+
+Actualmente las páginas usan “header-container/footer-container”. Si deseas usar este sistema alterno:
+1) Cambia los contenedores a id="header" y id="footer".
+2) Incluye ambos scripts en las páginas antes del cierre de body.
+3) Opcional: ajusta TemplateConfig.settings y pageTemplates.
+
+## Buenas prácticas y mejoras sugeridas
+
+- Accesibilidad: agrega etiquetas aria, alt descriptivos y roles.
+- SEO: títulos únicos, meta-descriptions, y headings consistentes.
+- Performance: optimiza imágenes en assets/img/servicios, usa tamaños responsivos.
+- Consistencia: unifica mayúsculas/minúsculas en nombres de archivos (Img1.jpg vs img1.jpg).
+- Seguridad: mueve credenciales y lógica de auth a un backend.
+- Automatización: añade un script npm para servir (p. ej., “serve” con http-server).
+- Despliegue: usar GitHub Pages, Netlify o Vercel (carpeta raíz).
+
+## Contribuir
+
+1) Crea una rama feature/nombre-feature
+2) Commit con mensajes claros
+3) Pull Request con descripción y capturas
