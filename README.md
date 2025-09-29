@@ -90,8 +90,6 @@ Implementada en cliente solo para demostración en [assets/js/auth.js](assets/js
 - Recuerda sesión con localStorage/sessionStorage.
 - Tras login exitoso, redirige a [admin.html](admin.html).
 
-Advertencia: No uses este esquema en producción. Debe reemplazarse por autenticación del lado servidor.
-
 ## Panel de Administración
 
 UI en [admin.html](admin.html) con:
