@@ -1,0 +1,386 @@
+/* ===== ADMIN PANEL STYLES ===== */
+
+/* Main container */
+main.container-fluid {
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
+}
+
+/* Admin title */
+.admin-title {
+    color: #212529;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.admin-title i {
+    color: #6c757d;
+}
+
+/* Add service button */
+.btn-add-service {
+    background: linear-gradient(#000000, #020202);
+    border: none;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    /*box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);*/
+    transition: all 0.3s ease;
+}
+
+.btn-add-service:hover {
+    background: linear-gradient(135deg, #0056b3, #004085);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Services table card */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* ===== Encabezado de la tabla personalizado ===== */
+.table thead.table-header,
+.table-header,
+thead.table-header {
+    background: #e3bea4 !important;
+    background-color: #e3bea4 !important;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table thead.table-header th,
+.table-header th,
+thead.table-header th {
+    background: #e3bea4 !important;
+    background-color: #e3bea4 !important;
+    color: #000000 !important;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Arial Black', Arial, sans-serif;
+    border-bottom: 3px solid #d4a373 !important;
+    padding: 1.2rem 0.75rem;
+    vertical-align: middle;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Fuerza el color de fondo específicamente para Bootstrap */
+.table > thead > tr > th.table-header,
+.table > thead.table-header > tr > th,
+table thead.table-header th {
+    background: #e3bea4 !important;
+    background-color: #e3bea4 !important;
+}
+
+/* Table rows */
+.service-row {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.service-row:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-row td {
+    padding: 20px 15px;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* ================= Service image (refactor con variables) =================
+   Edita las variables para cambiar tamaño global sin tocar múltiples reglas.
+   Si necesitas tamaños distintos en una fila: <div class="service-image" style="--service-thumb-width:180px">.
+*/
+:root {
+    --service-thumb-width: 240px; /* ancho base */
+    --service-thumb-ratio: 4/3;   /* relación de aspecto (puedes usar 16/9, 1/1, etc.) */
+    --service-thumb-radius: 8px;
+}
+
+.service-image {
+    width: var(--service-thumb-width);
+    aspect-ratio: var(--service-thumb-ratio);
+    overflow: hidden;
+    border-radius: var(--service-thumb-radius);
+    position: relative;
+    background: #f1f3f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Fallback si el navegador no soporta aspect-ratio */
+    height: calc(var(--service-thumb-width) * (3/4));
+}
+
+.service-image > img {
+    width: 100% !important; /* Sobrescribe .img-thumbnail */
+    height: 100% !important; /* Forzamos cubrir contenedor */
+    object-fit: cover !important;
+    display: block;
+    transition: transform 0.35s ease;
+    transform: scale(1);
+    /* Elimina padding/bordes de .img-thumbnail */
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.service-image:hover > img {
+    transform: scale(1.06);
+}
+
+/* Variantes utilitarias */
+.service-image.small { --service-thumb-width: 160px; }
+.service-image.xs { --service-thumb-width: 120px; }
+
+/* Responsive (ajuste progresivo) */
+@media (max-width: 992px) { :root { --service-thumb-width: 200px; } }
+@media (max-width: 768px) { :root { --service-thumb-width: 160px; } }
+@media (max-width: 576px) { :root { --service-thumb-width: 120px; } }
+
+/* Service name */
+.service-name {
+    font-weight: 600;
+    color: #212529;
+    font-size: 1rem;
+}
+
+/* Service price */
+.service-price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #28a745;
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.action-buttons .btn {
+    border-radius: 6px;
+    padding: 8px 12px;
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Botón editar específico (evitamos pelear con btn-outline-primary global) */
+.btn-edit {
+    --btn-edit-color: #6fa5f5; /* Ajusta aquí el color del botón Editar */
+    color: var(--btn-edit-color);
+    border: 2px solid var(--btn-edit-color);
+    background: transparent;
+    transition: all .3s ease;
+}
+.btn-edit:hover {
+    background: var(--btn-edit-color);
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.action-buttons .btn-outline-danger {
+    border-color: #000000;
+    color: #000000;
+}
+
+.action-buttons .btn-outline-danger:hover {
+    background-color: #a235dc;
+    border-color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+/* Modal styles */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background: #000000;
+    color: white;
+    border-bottom: none;
+    padding: 20px 30px;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 20px 30px;
+    background-color: #f8f9fa;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Form styles */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border: 2px solid #e9ecef;
+    font-weight: 600;
+}
+
+/* Image preview */
+#imagePreview {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones del modal */
+.modal-footer .btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #333333;
+    border-color: #333333;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Form text normal */
+.form-text {
+    color: #6c757d !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .admin-title { font-size: 1.5rem; margin-bottom: 1rem; }
+    .btn-add-service { width: 100%; margin-top: 1rem; }
+    .action-buttons { flex-direction: column; align-items: center; }
+    .action-buttons .btn { margin-bottom: 5px; min-width: 80px; }
+    .service-price { font-size: 0.9rem; padding: 4px 8px; }
+    .modal-body { padding: 20px; }
+}
+
+/* Ajustes responsivos usando variables (coherentes con bundle) */
+@media (max-width: 992px) { :root { --service-thumb-width: 200px; } }
+@media (max-width: 768px) { :root { --service-thumb-width: 160px; } }
+@media (max-width: 576px) { :root { --service-thumb-width: 120px; } }
+
+@media (max-width: 576px) {
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+    
+    .admin-title {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    
+    .service-row td {
+        padding: 15px 10px;
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

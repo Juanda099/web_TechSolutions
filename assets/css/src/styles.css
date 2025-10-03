@@ -1,0 +1,282 @@
+/* CSS Footer */
+
+.footer {
+  background-color: #fffdfd;
+  color: #3f3d3d;
+  padding: 40px 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: 'Segoe UI', sans-serif;
+  justify-content: center;
+}
+
+.footer #copyright {
+  margin-left: 50px;
+}
+
+.footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+  gap: 30px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h4 {
+  margin-bottom: 10px;
+  color: #000303;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  color: #474545;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+}
+
+.footer-col a:hover {
+  color: #4b4848;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.social-icons img:hover {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: match-parent;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  font-size: 0.9em;
+  border-top: 0.1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 50px;
+}
+
+
+
+/* CSS Servicios */
+.servicios-flex {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.titulo-servicios {
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Contenedor flex horizontal */
+.servicios-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* o center si prefieres centrado */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Tarjetas estilo acordeón */
+.servicio-item {
+  flex: 0 0 calc(25% - 20px); /* tamaño fijo por tarjeta */
+  width: 150px;   /* ajusta según lo que te parezca visualmente agradable */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto acordeón al pasar el mouse */
+.servicio-item:hover {
+  transform: scale(1.05);
+  background-color: #e6f0ff;
+  z-index: 1;
+}
+
+/* Imagen ajustada */
+.servicio-item img {
+  width: 100%;
+  height: max(200px, 30vh);
+  min-height: 200px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Texto y botón */
+.servicio-item h3 {
+  font-size: 1em;
+  margin-bottom: 5px;
+  color: #080808;
+}
+
+.servicio-item p {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.servicio-item button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.servicio-item button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .servicios-container {
+    flex-direction: column; /* Cambia la flexbox a columna */
+  }
+
+    .servicio-item {
+    flex: 1 1 100%; /* Cada tarjeta ocupa todo el ancho (1 columna) */
+    width: 100%;    /* Ancho completo para que ocupe todo el espacio horizontal */
+  }
+}
+
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .servicios-container {
+    flex-direction: row;  /* Mantiene fila */
+    flex-wrap: wrap;      /* Permite envolver filas si no caben */
+  }
+
+  .servicio-item {
+    flex: 0 0 48%;        /* Cada tarjeta ocupa cerca de la mitad del contenedor, con espacio para gap */
+    width: 48%;
+  }
+}
+
+/* Estilo original para compatibilidad, pero sobrescrito para el nuevo sistema */
+#detalles-servicios-container {
+  margin: 0; /* Reset margin para Bootstrap */
+  max-width: none; /* Permitir que Bootstrap maneje el ancho */
+  display: block; /* Cambiar de flex a block para Bootstrap */
+  /* flex-wrap y otras propiedades flex removidas para compatibilidad con Bootstrap */
+}
+
+/* Estilos originales deshabilitados para compatibilidad con Bootstrap */
+.detalles-servicio-item-legacy {
+  /* Para las dos primeras columnas, ocupan la mitad cada una */
+  flex: 1 1 42%;
+  box-sizing: border-box;
+}
+
+/* Estilos legacy deshabilitados para compatibilidad con Bootstrap */
+.detalles-servicio-item-legacy:first-child {
+  display: flex;
+  align-items: center; /* Centra verticalmente si hay más contenido */
+  padding-right: 20px; /* Espacio entre la imagen y el borde derecho */
+}
+
+/* Imagen ocupa un tamaño adecuado, no todo el ancho */
+.detalles-servicio-item-legacy:first-child img {
+  width: auto;     /* ancho automático */
+  max-width: 100%;  /* máximo 90% del contenedor */
+  padding-left: 60px;
+  height: max(300px, 60vh);
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0;       /* sin margen para evitar desplazamientos */
+}
+
+/* Para la tercera columna, ocupa el 100% (fila completa) */
+.detalles-servicio-item-legacy:nth-child(3) {
+  flex: 1 1 100%;
+}
+
+
+/* Estilos legacy deshabilitados - ahora usamos Bootstrap */
+.detalles-servicio-item-legacy img {
+  width: 40%;
+  height: max(250px, 60vh);
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.detalles-servicio-item-legacy h3 {
+  font-size: 2.5em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 50px;
+  color: #080808;
+}
+
+.detalles-servicio-item-legacy p {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  margin-left: 50px;
+  color: #555;
+}
+
+#descripción-legacy {
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  color: #555;
+}
+
+.detalles-servicio-item-legacy button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-left: 50px;
+}
+
+.detalles-servicio-item-legacy button:hover {
+  background-color: #0056b3;
+}

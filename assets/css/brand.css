@@ -1,0 +1,134 @@
+/* Built bundle: brand.css -> sources: corporate-colors.css */
+/* ===== VARIABLES DE COLORES CORPORATIVOS ===== */
+:root {
+  /* Colores principales */
+  --primary-color: #000000;        /* Negro corporativo principal */
+  --primary-hover: #333333;       /* Negro más claro para hover */
+  --secondary-color: #555555;     /* Gris oscuro para texto secundario */
+  --accent-color: #0056b3;        /* Azul de acento (solo para algunos elementos) */
+  
+  /* Colores de estado */
+  --success-color: #28a745;       /* Verde para éxito */
+  --warning-color: #ffc107;       /* Amarillo para advertencias */
+  --danger-color: #dc3545;        /* Rojo para errores */
+  --info-color: #17a2b8;          /* Azul claro para información */
+  
+  /* Colores de fondo */
+  --bg-light: #f9f9f9;           /* Fondo claro */
+  --bg-white: #ffffff;           /* Fondo blanco */
+  --bg-dark: #333333;            /* Fondo oscuro */
+  
+  /* Bordes y líneas */
+  --border-light: #eee;          /* Borde claro */
+  --border-medium: rgba(0,0,0,0.1); /* Borde medio */
+  
+  /* Sombras */
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-heavy: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* ===== BOTONES CORPORATIVOS ===== */
+.btn-corporate {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-corporate:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-corporate-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-corporate-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ===== TEXTOS CORPORATIVOS ===== */
+.text-corporate {
+  color: var(--primary-color) !important;
+}
+
+.text-corporate-light {
+  color: var(--secondary-color) !important;
+}
+
+/* ===== TARJETAS CORPORATIVAS ===== */
+.card-corporate {
+  border: none;
+  box-shadow: var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.card-corporate:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.card-corporate .card-header {
+  background-color: var(--primary-color);
+  color: white;
+  border-bottom: none;
+}
+
+/* ===== ALERTAS CORPORATIVAS ===== */
+.alert-corporate {
+  background-color: var(--bg-light);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 5px;
+}
+
+/* ===== OVERRIDE BOOTSTRAP PARA MANTENER CONSISTENCIA ===== */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+  border-color: var(--primary-hover) !important;
+}
+
+.btn-outline-primary {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+/* ===== SPINNER CORPORATIVO ===== */
+.spinner-border-corporate {
+  border-color: var(--primary-color);
+  border-right-color: transparent;
+}
